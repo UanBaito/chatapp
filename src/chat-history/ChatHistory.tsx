@@ -1,3 +1,10 @@
 export default function ChatHistory() {
-  return <></>;
+  return (
+    <section aria-label="Chat history">
+      <ul>
+        <li>hello</li>
+        <li>world</li>
+      </ul>
+    </section>
+  );
 }
