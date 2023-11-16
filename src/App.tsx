@@ -15,13 +15,16 @@ export default function App() {
       {connection.readyState === 1
         ? (
           <>
-            <section className={styles.chat_sidebar}>
+            <section className={styles.chat_sidebar} aria-label="List of users">
               <ChatSidebar />
             </section>
             <section aria-label="Chat history" className={styles.chat_history}>
-              <ChatHistory lastMessageState={connection.message}/>
+              <ChatHistory lastMessageState={connection.message} />
             </section>
-            <section className={styles.chat_newmessage} aria-label="Send new message">
+            <section
+              className={styles.chat_newmessage}
+              aria-label="Send new message"
+            >
               <ChatNewMessage connection={connection.ws} />
             </section>
           </>
