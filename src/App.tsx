@@ -1,4 +1,4 @@
-import "./App.css";
+import styles from "./App.module.scss";
 import ChatHistory from "./chat-history/ChatHistory";
 import ChatNewMessage from "./chat-newmessage/ChatNewMessage";
 import ChatSidebar from "./chat-sidebar/ChatSidebar";
@@ -12,7 +12,7 @@ export default function App() {
     };
   }
   return (
-    <main>
+    <main className={styles.chatbox}>
       {connection
         ? (
           <>
