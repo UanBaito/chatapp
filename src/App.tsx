@@ -5,6 +5,7 @@ import ChatSidebar from "./chat-sidebar/ChatSidebar";
 import useConnection from "./common/hooks/useConnection";
 
 export default function App() {
+  
   const connection = useConnection();
   if (connection?.readyState) {
     connection.onmessage = (event: MessageEvent) => {
@@ -13,7 +14,7 @@ export default function App() {
   }
   return (
     <main className={styles.chatbox}>
-      {connection
+      {connection?.readyState === 1
         ? (
           <>
             <section className={styles.chat_sidebar}>
