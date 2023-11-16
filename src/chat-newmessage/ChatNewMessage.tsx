@@ -26,6 +26,7 @@ export default function ChatNewMessage(
             onChange={(e) => setInputValue(e.target.value)}
           />
         </section>
+        <button>Send</button>
       </form>
     </>
   );
