@@ -21,7 +21,7 @@ export default function App() {
             <section aria-label="Chat history" className={styles.chat_history}>
               <ChatHistory lastMessageState={connection.message}/>
             </section>
-            <section className={styles.chat_newmessage}>
+            <section className={styles.chat_newmessage} aria-label="Send new message">
               <ChatNewMessage connection={connection.ws} />
             </section>
           </>
