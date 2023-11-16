@@ -1,11 +1,8 @@
 import { useState } from "react";
 import SentMessage from "./components/SentMessage";
 import styles from "./styles/ChatHistory.module.scss";
+import { Message } from "../common/types";
 
-type Message = {
-  text: string;
-  id: string;
-};
 
 export default function ChatHistory({ connection }: { connection: WebSocket }) {
   const [messageHistory, setMessageHistory] = useState<Message[]>([]);
