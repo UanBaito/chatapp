@@ -13,12 +13,12 @@ export default function ChatHistory({ connection }: { connection: WebSocket }) {
   };
 
   return (
-    <section aria-label="Chat history">
+    <>
       <ul>
         {messageHistory.map((message) => (
           <li key={message.id}>{message.text}</li>
         ))}
       </ul>
-    </section>
+    </>
   );
 }

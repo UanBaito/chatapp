@@ -1,6 +1,6 @@
 export default function ChatSidebar() {
   return (
-    <section>
+    <>
       <h2>Active users</h2>
       <ul>
         <li>
@@ -10,6 +10,6 @@ export default function ChatSidebar() {
           Bob
         </li>
       </ul>
-    </section>
+    </>
   );
 }

@@ -10,7 +10,7 @@ export default function ChatNewMessage(
   }
 
   return (
-    <section>
+    <>
       <h2>Send message</h2>
       <form
         onSubmit={(e) => {
@@ -26,6 +26,6 @@ export default function ChatNewMessage(
           />
         </section>
       </form>
-    </section>
+    </>
   );
 }

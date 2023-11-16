@@ -16,9 +16,15 @@ export default function App() {
       {connection
         ? (
           <>
-            <ChatSidebar />
-            <ChatHistory connection={connection} />
-            <ChatNewMessage connection={connection}/>
+            <section>
+              <ChatSidebar />
+            </section>
+            <section aria-label="Chat history">
+              <ChatHistory connection={connection} />
+            </section>
+            <section>
+              <ChatNewMessage connection={connection} />
+            </section>
           </>
         )
         : <span>loading...</span>}
