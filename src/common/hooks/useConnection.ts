@@ -10,6 +10,6 @@ export default function useConnection() {
     return () => {
       connection?.close();
     };
-  });
+  }, []);
   return connection;
 }
