@@ -1,7 +1,8 @@
+import styles from './styles/ChatSidebar.module.scss'
 export default function ChatSidebar() {
   return (
-    <>
-      <h2>Active users</h2>
+    <div className={styles.container}>
+      <h2>users</h2>
       <ul>
         <li>
           Alice
@@ -10,6 +11,6 @@ export default function ChatSidebar() {
           Bob
         </li>
       </ul>
-    </>
+    </div>
   );
 }
