@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SentMessage from "./components/SentMessage";
 import styles from "./styles/ChatHistory.module.scss";
 import { Message } from "../common/types";
 
-
-export default function ChatHistory({ connection }: { connection: WebSocket }) {
+export default function ChatHistory(
+  { lastMessageState }: { lastMessageState: Message | null },
+) {
   const [messageHistory, setMessageHistory] = useState<Message[]>([]);
-  connection.onmessage = (event) => {
-    const eventData = JSON.parse(event.data);
-    setMessageHistory((prevHistory) => [eventData, ...prevHistory]);
-  };
+  useEffect(() => {
+    if (lastMessageState) {
+      const eventData = lastMessageState;
+      setMessageHistory((prevHistory) => [eventData, ...prevHistory]);
+    }
+  }, [lastMessageState, setMessageHistory]);
 
   return (
     <>
