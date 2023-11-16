@@ -16,7 +16,8 @@ export default function ChatHistory({ connection }: { connection: WebSocket }) {
     <>
       <ul>
         {messageHistory.map((message) => (
-          <li key={message.id}>{message.text}</li>
+          ///FIXME: update this to use a proper id
+          <li key={message.id + Date.now()}>{message.text}</li>
         ))}
       </ul>
     </>
