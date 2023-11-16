@@ -7,7 +7,7 @@ import useConnection from "./common/hooks/useConnection";
 export default function App() {
   
   const connection = useConnection();
-  if (connection?.readyState) {
+  if (connection?.readyState === 1) {
     connection.onmessage = (event: MessageEvent) => {
       console.log(event);
     };
