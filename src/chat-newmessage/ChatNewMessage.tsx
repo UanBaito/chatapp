@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from './styles/ChatNewMessage.module.scss'
 
 export default function ChatNewMessage(
   { connection }: { connection: WebSocket },
@@ -11,12 +12,12 @@ export default function ChatNewMessage(
 
   return (
     <>
-      <h2>Send message</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
           sendMessage(inputValue);
         }}
+        className={styles.container}
       >
         <section>
           <input
