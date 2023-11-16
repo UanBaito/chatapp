@@ -10,7 +10,7 @@ export default function ChatHistory(
   useEffect(() => {
     if (lastMessageState) {
       const eventData = lastMessageState;
-      setMessageHistory((prevHistory) => [eventData, ...prevHistory]);
+      setMessageHistory((prevHistory) => [...prevHistory, eventData]);
     }
   }, [lastMessageState, setMessageHistory]);
 
