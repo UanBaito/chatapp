@@ -16,13 +16,13 @@ export default function App() {
       {connection
         ? (
           <>
-            <section>
+            <section className={styles.chat_sidebar}>
               <ChatSidebar />
             </section>
-            <section aria-label="Chat history">
+            <section aria-label="Chat history" className={styles.chat_history}>
               <ChatHistory connection={connection} />
             </section>
-            <section>
+            <section className={styles.chat_newmessage}>
               <ChatNewMessage connection={connection} />
             </section>
           </>
