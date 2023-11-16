@@ -5,26 +5,24 @@ import ChatSidebar from "./chat-sidebar/ChatSidebar";
 import useConnection from "./common/hooks/useConnection";
 
 export default function App() {
-  
   const connection = useConnection();
-  if (connection?.readyState === 1) {
-    connection.onmessage = (event: MessageEvent) => {
-      console.log(event);
-    };
+  if (connection.ws === null) {
+    return <span>Establishing connection...</span>;
   }
+
   return (
     <main className={styles.chatbox}>
-      {connection?.readyState === 1
+      {connection.readyState === 1
         ? (
           <>
             <section className={styles.chat_sidebar}>
               <ChatSidebar />
             </section>
             <section aria-label="Chat history" className={styles.chat_history}>
-              <ChatHistory connection={connection} />
+              <ChatHistory lastMessageState={connection.message}/>
             </section>
             <section className={styles.chat_newmessage}>
-              <ChatNewMessage connection={connection} />
+              <ChatNewMessage connection={connection.ws} />
             </section>
           </>
         )
