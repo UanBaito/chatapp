@@ -1,0 +1,27 @@
+.chatbox {
+  display: grid;
+  width: 90vw;
+  height: 90dvh;
+  max-width: 1024px;
+  max-height: 720px;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: 
+  'sidebar history history history'
+  'sidebar history history history'
+  'sidebar history history history'
+  'sidebar history history history'
+  'sidebar newmessage newmessage newmessage';
+  .chat_newmessage {
+    grid-area: newmessage;
+    background: red;
+  }
+  .chat_history {
+    background-color: blue;
+    grid-area: history;
+  }
+  .chat_sidebar {
+    grid-area: sidebar;
+    background-color: green;
+  }
+}
