@@ -2,7 +2,7 @@ import styles from './styles/ChatSidebar.module.scss'
 export default function ChatSidebar() {
   return (
     <div className={styles.container}>
-      <h2>users</h2>
+      <h2>Users</h2>
       <ul>
         <li>
           Alice
