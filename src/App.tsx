@@ -16,7 +16,7 @@ export default function App() {
         ? (
           <>
             <section className={styles.chat_sidebar} aria-label="List of users">
-              <ChatSidebar />
+              <ChatSidebar lastMessageState={connection.message} />
             </section>
             <section aria-label="Chat history" className={styles.chat_history}>
               <ChatHistory lastMessageState={connection.message} />
