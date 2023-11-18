@@ -9,8 +9,10 @@ export default function ChatHistory(
   const [messageHistory, setMessageHistory] = useState<Message[]>([]);
   useEffect(() => {
     if (lastMessageState) {
-      const eventData = lastMessageState;
-      setMessageHistory((prevHistory) => [...prevHistory, eventData]);
+      if (lastMessageState.type === "message") {
+        const eventData = lastMessageState;
+        setMessageHistory((prevHistory) => [...prevHistory, eventData]);
+      }
     }
   }, [lastMessageState, setMessageHistory]);
 
@@ -19,7 +21,7 @@ export default function ChatHistory(
       <ul className={styles.list}>
         {messageHistory.map((message) => (
           ///FIXME: update this to use a proper id
-          <SentMessage key={message.id + Date.now} text={message.text} />
+          <SentMessage key={message.id + Date.now} text={message.data} />
         ))}
       </ul>
     </>
