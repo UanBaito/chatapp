@@ -14,6 +14,7 @@ export default function useConnection() {
       console.log("Connected!");
       setReadyState(WebSocket.OPEN);
       const name = prompt('Please enter your name')
+      newWebSocket.send(JSON.stringify({action: 'name', type: 'add', name}))
     };
     newWebSocket.onclose = () => {
       console.log("Closed!");
