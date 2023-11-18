@@ -17,7 +17,7 @@ export default function ChatSidebar(
     <div className={styles.container}>
       <h2>Users</h2>
       <ul>
-        {userList.map((name) => <li>{name}</li>)}
+        {userList.map((name) => <li key={name}>{name}</li>)}
       </ul>
     </div>
   );
