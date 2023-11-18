@@ -13,6 +13,7 @@ export default function useConnection() {
     newWebSocket.onopen = () => {
       console.log("Connected!");
       setReadyState(WebSocket.OPEN);
+      const name = prompt('Please enter your name')
     };
     newWebSocket.onclose = () => {
       console.log("Closed!");
@@ -41,3 +42,4 @@ export default function useConnection() {
   }, []);
   return { ws, readyState, message };
 }
+
