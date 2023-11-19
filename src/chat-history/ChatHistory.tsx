@@ -21,7 +21,7 @@ export default function ChatHistory(
       <ul className={styles.list}>
         {messageHistory.map((message) => (
           ///FIXME: update this to use a proper id
-          <SentMessage key={message.id + Date.now} text={message.data} />
+          <SentMessage key={message.id + Date.now} data={message.data} userName={connection.userInfo.name}/>
         ))}
       </ul>
     </>
