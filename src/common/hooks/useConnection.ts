@@ -1,11 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Message } from "../types";
 
 export default function useConnection() {
   const [readyState, setReadyState] = useState<0 | 1 | 2 | 3>(WebSocket.CLOSED);
   const [message, setMessage] = useState<Message | null>(null);
   const [ws, setWs] = useState<WebSocket | null>(null);
-  const nameRef = useRef<string | null>("");
+  const [userInfo, setUserInfo] = useState({ name: "" });
 
   useEffect(() => {
     const newWebSocket = new WebSocket(
@@ -15,13 +15,16 @@ export default function useConnection() {
       console.log("Connected!");
       setReadyState(WebSocket.OPEN);
       if (newWebSocket.readyState === 1) {
-        nameRef.current = nameRef.current ? nameRef.current : prompt("name");
-        newWebSocket.send(
-          JSON.stringify({
-            action: "name",
-            name: nameRef.current,
-          }),
-        );
+        const name = userInfo.name ? userInfo.name : prompt("name");
+        if (name) {
+          newWebSocket.send(
+            JSON.stringify({
+              action: "name",
+              name,
+            }),
+          );
+          setUserInfo({ name });
+        }
       }
     };
 
