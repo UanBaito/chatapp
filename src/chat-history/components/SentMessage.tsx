@@ -5,10 +5,15 @@ export default function SentMessage(
     userName: string;
   },
 ) {
-  const author = data.author === userName ? "Me" : data.author;
+  const isCurrentUser = data.author === userName ? true : false;
+  const author = isCurrentUser ? "Me" : data.author;
+
   return (
     <li className={styles.container}>
-      {`${author}: ${data.message}`}
+      <p>
+        <span data-isCurrentUser={isCurrentUser}>{author}: </span>
+        {data.message}
+      </p>
     </li>
   );
 }
