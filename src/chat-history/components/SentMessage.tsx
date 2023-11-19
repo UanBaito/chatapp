@@ -11,7 +11,7 @@ export default function SentMessage(
   return (
     <li className={styles.container}>
       <p>
-        <span data-isCurrentUser={isCurrentUser}>{author}: </span>
+        <span data-iscurrentuser={isCurrentUser}>{author}: </span>
         {data.message}
       </p>
     </li>
