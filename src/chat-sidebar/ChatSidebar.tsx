@@ -17,7 +17,8 @@ export default function ChatSidebar(
     <div className={styles.container}>
       <h2>Users</h2>
       <ul>
-        {userList.map((name) => <li key={name}>{name}</li>)}
+        {/*FIXME: again, add proper key */}
+        {userList.map((name) => <li key={name + Date.now()}>{name}</li>)}
       </ul>
     </div>
   );
