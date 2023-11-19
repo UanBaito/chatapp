@@ -19,7 +19,7 @@ export default function App() {
               <ChatSidebar lastMessageState={connection.message} />
             </section>
             <section aria-label="Chat history" className={styles.chat_history}>
-              <ChatHistory lastMessageState={connection.message} />
+              <ChatHistory connection={connection} />
             </section>
             <section
               className={styles.chat_newmessage}

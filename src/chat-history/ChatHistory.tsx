@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import SentMessage from "./components/SentMessage";
 import styles from "./styles/ChatHistory.module.scss";
-import { Message } from "../common/types";
+import { Connection, Message } from "../common/types";
 
 export default function ChatHistory(
-  { lastMessageState }: { lastMessageState: Message | null },
+  { connection }: { connection: Connection },
 ) {
   const [messageHistory, setMessageHistory] = useState<Message[]>([]);
   useEffect(() => {
-    if (lastMessageState) {
-      if (lastMessageState.type === "message") {
-        const eventData = lastMessageState;
+    if (connection.message) {
+      if (connection.message.type === "message") {
+        const eventData = connection.message;
         setMessageHistory((prevHistory) => [...prevHistory, eventData]);
       }
     }
-  }, [lastMessageState, setMessageHistory]);
+  }, [connection.message, setMessageHistory]);
 
   return (
     <>
