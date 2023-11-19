@@ -57,5 +57,5 @@ export default function useConnection() {
     };
   }, []);
 
-  return { ws, readyState, message };
+  return { ws, readyState, message, userInfo };
 }
