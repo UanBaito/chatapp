@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Message } from "../types";
 
 export default function useConnection() {
-  const [ws, setWs] = useState<WebSocket | null>(null);
   const [readyState, setReadyState] = useState<0 | 1 | 2 | 3>(WebSocket.CLOSED);
   const [message, setMessage] = useState<Message | null>(null);
+  const [ws, setWs] = useState<WebSocket | null>(null);
+  const nameRef = useRef<string | null>("");
 
   useEffect(() => {
     const newWebSocket = new WebSocket(
@@ -13,26 +14,37 @@ export default function useConnection() {
     newWebSocket.onopen = () => {
       console.log("Connected!");
       setReadyState(WebSocket.OPEN);
-      const name = prompt('Please enter your name')
-      newWebSocket.send(JSON.stringify({action: 'name', type: 'add', name}))
+      if (newWebSocket.readyState === 1) {
+        nameRef.current = nameRef.current ? nameRef.current : prompt("name");
+        newWebSocket.send(
+          JSON.stringify({
+            action: "name",
+            name: nameRef.current,
+          }),
+        );
+      }
     };
+
     newWebSocket.onclose = () => {
       console.log("Closed!");
       setReadyState(WebSocket.CLOSED);
     };
+
     newWebSocket.onmessage = (event) => {
       console.log("Received message!");
+      console.log(event.data);
       setMessage(JSON.parse(event.data));
     };
+
     setWs(newWebSocket);
 
     return () => {
       //in strict mode, react will try to close the connection before it was even established.
       //This is to prevent that.
+      newWebSocket.onmessage = null;
+      newWebSocket.onclose = null;
+      newWebSocket.onopen = null;
       if (newWebSocket.readyState === 1) {
-        newWebSocket.onclose = null;
-        newWebSocket.onopen = null;
-        newWebSocket.onmessage = null;
         newWebSocket.close();
       } else {
         newWebSocket.addEventListener("open", () => {
@@ -41,6 +53,6 @@ export default function useConnection() {
       }
     };
   }, []);
+
   return { ws, readyState, message };
 }
-
