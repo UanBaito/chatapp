@@ -1,4 +1,11 @@
 .container {
   padding: 0 0.2rem;
   word-break: break-all;
+  p {
+    margin: 0;
+    font-size: 0.9rem;
+    span[data-isCurrentUser="true"] {
+      color: red;
+    }
+  }
 }
