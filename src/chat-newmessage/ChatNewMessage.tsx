@@ -1,13 +1,22 @@
 import { useState } from "react";
-import styles from './styles/ChatNewMessage.module.scss'
+import styles from "./styles/ChatNewMessage.module.scss";
 
 export default function ChatNewMessage(
-  { connection }: { connection: WebSocket },
+  { connection, userInfo }: {
+    connection: WebSocket;
+    userInfo: { name: string };
+  },
 ) {
   const [inputValue, setInputValue] = useState("");
 
   function sendMessage(message: string) {
-    connection.send(JSON.stringify({ action: "message", message: message }));
+    connection.send(
+      JSON.stringify({
+        action: "message",
+        message: message,
+        author: userInfo.name,
+      }),
+    );
   }
 
   return (
