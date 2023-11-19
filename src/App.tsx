@@ -25,7 +25,7 @@ export default function App() {
               className={styles.chat_newmessage}
               aria-label="Send new message"
             >
-              <ChatNewMessage connection={connection.ws} />
+              <ChatNewMessage connection={connection.ws} userInfo={connection.userInfo} />
             </section>
           </>
         )
