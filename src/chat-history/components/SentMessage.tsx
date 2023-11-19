@@ -5,7 +5,7 @@ export default function SentMessage(
     userName: string;
   },
 ) {
-  const isCurrentUser = data.author === userName ? true : false;
+  const isCurrentUser = data.author === userName;
   const author = isCurrentUser ? "Me" : data.author;
 
   return (
