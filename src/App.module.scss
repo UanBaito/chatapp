@@ -1,17 +1,17 @@
 .chatbox {
   border: 1px solid black;
-  background-color: burlywood;
   display: grid;
+  background-color: #222;
   width: 90vw;
   height: 90dvh;
   max-width: 1024px;
   max-height: 720px;
   grid-template-rows: repeat(2, 1fr) 1.5rem;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-areas: 
-  'sidebar history history history'
-  'sidebar history history history'
-  'sidebar newmessage newmessage newmessage';
+  grid-template-areas:
+    "sidebar history history history"
+    "sidebar history history history"
+    "sidebar newmessage newmessage newmessage";
   .chat_newmessage {
     grid-area: newmessage;
     border: 1px solid black;
@@ -22,5 +22,17 @@
   }
   .chat_sidebar {
     grid-area: sidebar;
+  }
+}
+
+@media (max-width: 640px) {
+  .chatbox {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .chat_sidebar {
+    div {
+      display: none;
+    }
   }
 }
