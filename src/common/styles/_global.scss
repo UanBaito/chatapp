@@ -1,0 +1,8 @@
+@use "variables" as v;
+body {
+  background-color: v.$background;
+  color: white
+}
+
+
+
