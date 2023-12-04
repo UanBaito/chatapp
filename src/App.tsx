@@ -3,6 +3,7 @@ import ChatHistory from "./chat-history/ChatHistory";
 import ChatNewMessage from "./chat-newmessage/ChatNewMessage";
 import ChatSidebar from "./chat-sidebar/ChatSidebar";
 import useConnection from "./common/hooks/useConnection";
+import "./common/styles/_global.scss"
 
 export default function App() {
   const connection = useConnection();
